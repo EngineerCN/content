@@ -95,8 +95,8 @@ var data =   {
     name:"ckl",
     age:18,
     contact:{
-              address:"xxxxxxxx",
-              phone:888
+       address:"xxxxxxxx",
+       phone:888
     }
  }
 
@@ -113,18 +113,29 @@ console.log("============")
 console.log(fn(data));
 console.log("============")
 ```
-# 例子2
+# 例子3
 Data
 ```
-  arr = ["A","B","C","D"]
+var data =   {
+    name:"ckl",
+    age:18,
+    contact:{
+        address:"xxxxxxxx",
+        phone:888
+    },
+    coin:['ETH','BTC']
+ }
 ```
 Template
 ```
 <div>
+  My name is <%=name%> and i am <%=age%> years old.
+  I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
+  My favorite coin are:
     <ul>
-        <% arr.forEach(function(item){ %>
-          <li><%=item %></li>
-        <% }) %>
+      <% arr.forEach(function(item){ %>
+        <li><%=item %></li>
+      <% }) %>
     </ul>
 </div>
 ```
