@@ -134,7 +134,7 @@ Template
   My favorite coin are:
     <ul>
       <% arr.forEach(function(item){ %>
-        <li><%=item %></li>
+        <li><%=item%></li>
       <% }) %>
     </ul>
 </div>
