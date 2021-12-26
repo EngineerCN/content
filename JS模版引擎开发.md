@@ -38,6 +38,7 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 ```
   var tmpl = `<div>
   My name is <%=name%> and i am <%=age%> years old.
+  
   </div>`
   var data = {
       name:"ckl",
