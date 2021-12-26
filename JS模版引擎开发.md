@@ -2,6 +2,7 @@
 数据（Data）+ 模版（Template） =  结果
 
 https://ejs.bootcss.com
+https://www.cnblogs.com/huansky/p/6073104.html
 
 语法
 * <% :'脚本' 标签，用于流程控制，无输出
