@@ -78,9 +78,7 @@ Template
 ```
 Result
 ```
-<div>
   <div> My name is ckl and i am 18 years old. I live in xxxxxxxx and my phone number is 888. </div>
-</div>
 ```
 Sulotion
 * 必须过滤制表符 tmpl.replace(/[\r\t\n]/g, " ")
@@ -135,9 +133,13 @@ Template
     <ul>
       <% arr.forEach(function(item){ %>
         <li><%=item%></li>
-      <% }) %>
+      <% }); %>
     </ul>
 </div>
+```
+Result
+```
+<div> My name is ckl and i am 18 years old. I live in xxxxxxxx and my phone number is 888. My favorite coins are: <ul><li>ETH</li><li>BTC</li></ul></div>
 ```
 Sulotion
 ```
