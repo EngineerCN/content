@@ -83,6 +83,9 @@ Result
 </div>
 ```
 Sulotion
+* 必须过滤制表符 tmpl.replace(/[\r\t\n]/g, " ")
+* 不直接替换变量，而是变成下一步函数类执行体
+* 使用函数类
 ```
 var tmpl = `<div>
 My name is <%=name%> and i am <%=age%> years old.
