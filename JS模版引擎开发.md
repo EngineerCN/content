@@ -139,7 +139,10 @@ Template
 ```
 Result
 ```
-<div> My name is ckl and i am 18 years old. I live in xxxxxxxx and my phone number is 888. My favorite coins are: <ul><li>ETH</li><li>BTC</li></ul></div>
+<div> 
+  My name is ckl and i am 18 years old. I live in xxxxxxxx and my phone number is 888. My favorite coins are: 
+  <ul><li>ETH</li><li>BTC</li></ul>
+</div>
 ```
 Sulotion
 ```
