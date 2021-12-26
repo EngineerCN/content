@@ -145,6 +145,8 @@ Result
 </div>
 ```
 Sulotion
+* 使用apply绑定函数this
+* 使用exec
 ```
 var tmpl = `<div>
 My name is <%=name%> and i am <%=age%> years old.
