@@ -66,8 +66,8 @@ Template
 ```
 <div>
     <ul>
-        <% arr.forEach(function(item){%>
-          <li><%= item %></li>
+        <% arr.forEach(function(item){ %>
+          <li><%=item %></li>
         <% }) %>
     </ul>
 </div>
