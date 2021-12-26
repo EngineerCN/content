@@ -38,8 +38,10 @@ Data
 Template
 ```
 <div>
-  <% if (user) { %>
-    <h2><%= user.name %></h2>
-  <% } %>
+    <ul>
+        <% arr.forEach(function(item){%>
+          <li><%= item %></li>
+        <% }) %>
+    </ul>
 </div>
 ```
