@@ -31,6 +31,8 @@ Result
 </div>
 ```
 Solution
+
+https://www.w3school.com.cn/jsref/jsref_obj_regexp.asp
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#指定一个函数作为参数
 ```
   var tmpl = `<div>
