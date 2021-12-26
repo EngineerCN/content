@@ -21,7 +21,7 @@ Data
 Template
 ```
 <div>
-  My name is <%= name%> and i am <%= age%> years old.
+  My name is <%=name%> and i am <%=age%> years old.
 </div>
 ```
 Result
