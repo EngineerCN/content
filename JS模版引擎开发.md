@@ -139,3 +139,62 @@ Template
     </ul>
 </div>
 ```
+Sulotion
+```
+var tmpl = `<div>
+My name is <%=name%> and i am <%=age%> years old.
+I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
+My favorite coins are:
+<ul>
+<% coins.forEach(function(item){ %>
+    <li><%= item %></li>
+<% }); %>
+</ul>
+</div>`
+
+var data =   {
+    name:"ckl",
+    age:18,
+    contact:{
+        address:"xxxxxxxx",
+        phone:888
+    },
+    coins:["ETH","BTC"]
+ }
+ 
+tmpl = tmpl.replace(/[\r\t\n]/g, " ")
+var scpt = []
+var index = 0
+
+// method 1
+var patt = new RegExp(/<%=([\s\S]+?)%>|<%([\s\S]+?)%>/,"g");
+while(match=patt.exec(tmpl)){
+    scpt.push("arr.push('"+tmpl.slice(index,match.index)+"');")
+    if(match[1]){
+        scpt.push("arr.push(" + match[1] +");")
+    }
+    if(match[2]){
+        scpt.push(match[2])
+    }
+    index = match.index + match[0].length
+}
+//method 2
+// var res = tmpl.replace(/<%=([\s\S]+?)%>|<%([\s\S]+?)%>/g,(p1,p2,p3,p4)=>{
+//     scpt.push("arr.push('"+tmpl.slice(index,p4)+"');")
+//     if(p2){
+//         scpt.push("arr.push(" + p2 +");")
+//     }
+//     if(p3){
+//         scpt.push(p3)
+//     }
+//     index = p4 + p1.length
+//     return `___`
+// })
+scpt.push("arr.push('"+ tmpl.substring(index,tmpl.length) +"');")
+var fn = new Function("var arr=[]; with(this){"+ scpt.join("") +"}; return arr.join('');"); 
+
+console.log("============")
+console.log(scpt);
+console.log(fn.apply(data))
+console.log("============")
+```
