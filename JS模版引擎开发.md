@@ -30,6 +30,29 @@ Result
   My name is ckl and i am 18 years old.
 </div>
 ```
+Solution
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#指定一个函数作为参数
+```
+  var tmpl = `<div>
+  My name is <%=name%> and i am <%=age%> years old.
+  </div>`
+  var data = {
+      name:"ckl",
+      age:18
+   }
+
+  var res = tmpl.replace(/<%=([\s\S]+?)%>/g,(p1,p2,p3)=>{
+      console.log(p1);
+      console.log(p2);
+      console.log(p3);
+      return data[p2]
+  })
+
+  console.log("============")
+  console.log(res);
+  console.log("============")
+
+```
 
 # 例子2
 Data
