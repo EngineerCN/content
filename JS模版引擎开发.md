@@ -57,7 +57,59 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
   console.log("============")
 
 ```
+# 例子2
+Data
+```
+  {
+     name:"ckl",
+     age:18,
+     contact:{
+               address:"xxxxxxxx",
+               phone:888
+     }
+  }
+```
+Template
+```
+<div>
+  My name is <%=name%> and i am <%=age%> years old.
+  I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
+</div>
+```
+Result
+```
+<div>
+  <div> My name is ckl and i am 18 years old. I live in xxxxxxxx and my phone number is 888. </div>
+</div>
+```
+Sulotion
+```
+var tmpl = `<div>
+My name is <%=name%> and i am <%=age%> years old.
+I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
+</div>`
+var data =   {
+    name:"ckl",
+    age:18,
+    contact:{
+              address:"xxxxxxxx",
+              phone:888
+    }
+ }
 
+var res = tmpl.replace(/[\r\t\n]/g, " ").replace(/<%=([\s\S]+?)%>/g,(p1,p2,p3)=>{
+    console.log(p1);
+    console.log(p2);
+    console.log(p3);
+    // return data[p2]
+    return "' + obj."+ p2 +" + '"
+})
+
+var fn = new Function('obj', 'return ' + "'"+res+"'"); 
+console.log("============")
+console.log(fn(data));
+console.log("============")
+```
 # 例子2
 Data
 ```
