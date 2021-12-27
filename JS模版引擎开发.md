@@ -116,6 +116,8 @@ console.log(fn(data));
 console.log("============")
 ```
 # 例子3
+https://regexr.com
+
 Data
 ```
 var data =   {
