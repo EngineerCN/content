@@ -116,8 +116,6 @@ console.log(fn(data));
 console.log("============")
 ```
 # 例子3
-https://regexr.com
-
 Data
 ```
 var data =   {
@@ -154,6 +152,7 @@ Sulotion
 * 使用apply绑定函数this
 * 使用exec
   https://www.w3school.com.cn/jsref/jsref_exec_regexp.asp
+* 正则测试https://regexr.com
 ```
 var tmpl = `<div>
 My name is <%=name%> and i am <%=age%> years old.
