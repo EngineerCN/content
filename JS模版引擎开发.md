@@ -155,7 +155,7 @@ Sulotion
 ```
 var tmpl = `<div>
 My name is <%=name%> and i am <%=age%> years old.
-I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
+I live in <%=contact.address%> and <%my phone number is <%=contact.phone%>.
 My favorite coins are:
 <ul>
 <% coins.forEach(function(item){ %>
@@ -163,7 +163,6 @@ My favorite coins are:
 <% }); %>
 </ul>
 </div>`
-
 var data =   {
     name:"ckl",
     age:18,
@@ -173,13 +172,11 @@ var data =   {
     },
     coins:["ETH","BTC"]
  }
- 
 tmpl = tmpl.replace(/[\r\t\n]/g, " ")
 var scpt = []
 var index = 0
 
-// method 1
-var patt = new RegExp(/<%=([\s\S]+?)%>|<%([\s\S]+?)%>/,"g");
+var patt = new RegExp(/<%=([^<%=]+?)%>|<%([^<%=]+?)%>/,"g");
 while(match=patt.exec(tmpl)){
     scpt.push("arr.push('"+tmpl.slice(index,match.index)+"');")
     if(match[1]){
@@ -190,7 +187,6 @@ while(match=patt.exec(tmpl)){
     }
     index = match.index + match[0].length
 }
-//method 2
 // var res = tmpl.replace(/<%=([\s\S]+?)%>|<%([\s\S]+?)%>/g,(p1,p2,p3,p4)=>{
 //     scpt.push("arr.push('"+tmpl.slice(index,p4)+"');")
 //     if(p2){
