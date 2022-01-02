@@ -135,7 +135,7 @@ Template
   I live in <%=contact.address%> and my phone number is <%=contact.phone%>.
   My favorite coin are:
     <ul>
-      <% arr.forEach(function(item){ %>
+      <% cion.forEach(function(item){ %>
         <li><%=item%></li>
       <% }); %>
     </ul>
