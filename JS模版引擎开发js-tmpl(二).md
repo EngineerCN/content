@@ -1,6 +1,6 @@
 # Github actions
   *  github actions = gitlab ci = jenkin
-  *  DevOps = CI(持续集成) + CD(持续发布)
+  *  DevOps = CI(持续集成) + CD(持续发布)          // What is SRE? What is the different between SRE and DevOps?
   *  DevSecOps = CI + SEC + CD
   *  Security Tool = SAST, DAST, IAST, And RASP
   *  https://www.softwaretestinghelp.com/differences-between-sast-dast-iast-and-rasp/
@@ -10,6 +10,53 @@
   * npm login that account
   * configure the package file
   * run npm publish
+  
+# Package
+```
+{
+  "name": "@chankamlam/js-tmpl",
+  "version": "1.0.8",
+  "description": "A javascript template engine for frontend and backend",
+  "main": "lib/index.js",             // entrypoint
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "coverage": "npx jest --coverage",
+    "pub": "npm publish --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chankamlam/js-tmpl.git"
+  },
+   "author": {
+    "name": "chankamlam",
+    "email": "chankamlam@icloud.com"
+  },
+  "keywords": [                    // important
+    "js template",
+    "javascript template",
+    "template engine"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chankamlam/chinese-search"
+  },
+  "license": "MIT",                  // important
+  "bugs": {
+    "url": "https://github.com/chankamlam/js-tmpl/issues"
+  },
+  "homepage": "https://github.com/chankamlam/js-tmpl#readme",
+  "devDependencies": {
+    "express": "^4.17.2",
+    "jest": "^27.4.5",
+    "@chankamlam/js-tmpl": "^1.0.7"
+  }
+}
+```
+
 # How to write a template middleware of express
 https://www.expressjs.com.cn/advanced/developing-template-engines.html
 ```
