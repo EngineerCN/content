@@ -38,6 +38,7 @@ const start = ()=>{
       server.addMembership(multicastAddr);
       const address = server.address();
   
+      // 定时发消息
       setInterval(()=>{
         broadcast()
       },1000)
@@ -48,6 +49,6 @@ const start = ()=>{
     server.bind(port);
 
 }
-
 start()
+
 ```
