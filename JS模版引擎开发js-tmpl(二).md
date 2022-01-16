@@ -1,26 +1,3 @@
-# Github actions
-  *  github actions = gitlab ci = jenkin
-  *  DevOps = CI(持续集成) + CD(持续发布)          // What is SRE? What is the different between SRE and DevOps?
-  *  DevSecOps = CI + SEC + CD
-  *  Security Tool = SAST, DAST, IAST, And RASP
-  *  https://www.softwaretestinghelp.com/differences-between-sast-dast-iast-and-rasp/
-      ## SAST
-      * NodeJsScan.
-      * SonarQube.
-      * GitGuardian.
-      * Snyk.
-      * WhiteSource Bolt for GitHub.
-      * OWASP ZAP.
-      * Contrast Security - Community.
-      * Sqreen.
-      ## DAST
-      * ZED Attack Proxy or ZAP. It is an open source tool which is offered by OWASP for performing security testing. ...
-      * Nikto. ...
-      * GoLismero.
-      ## IAST
-      * OpenRASP
-
-
 
 # Publish to npm
   * Register a npm account
@@ -95,3 +72,29 @@ app.set('view engine', 'ntl') // register the template engine
 https://www.sohu.com/na/414543010_120781628
 
 ![3e95c3ad527a4cc7b4fd32422af59780](https://user-images.githubusercontent.com/9009522/147854103-c12a67df-765f-43c4-b883-291d84f5e6fe.png)
+
+
+# Github actions
+  *  github actions = gitlab ci = jenkin
+  *  DevOps = CI(持续集成) + CD(持续发布)          // What is SRE? What is the different between SRE and DevOps?
+  *  DevSecOps = CI + SEC + CD
+  *  Security Tool = SAST, DAST, IAST, And RASP
+  *  https://www.softwaretestinghelp.com/differences-between-sast-dast-iast-and-rasp/
+      ## SAST
+      * NodeJsScan.
+      * SonarQube.
+      * GitGuardian.
+      * Snyk.
+      * WhiteSource Bolt for GitHub.
+      * OWASP ZAP.
+      * Contrast Security - Community.
+      * Sqreen.
+      ## DAST
+      * ZED Attack Proxy or ZAP. It is an open source tool which is offered by OWASP for performing security testing. ...
+      * Nikto. ...
+      * GoLismero.
+      ## IAST
+      * OpenRASP
+
+
+
