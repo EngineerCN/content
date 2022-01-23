@@ -1,5 +1,6 @@
-# Build a p2p demo
 
+# P2P = Peer to Peer
+ ![image](https://user-images.githubusercontent.com/9009522/147846868-1c1069d6-e9fd-4200-9561-7a9b1b883852.png)
 https://blog.csdn.net/c_base_jin/article/details/97616341
 
 以下是对UDP三种通信方式概念说明
@@ -10,7 +11,7 @@ https://blog.csdn.net/c_base_jin/article/details/97616341
 
 * 组播，一对多的通信方式，将网络上的主机进行逻辑上的分组，通信只会在同一个分组上面进行收发消息
 
-# 多播
+## 多播
 ```
 
 const dgram = require('dgram')
@@ -57,3 +58,11 @@ const start = ()=>{
 start()
 
 ```
+
+
+# BlockChain
+
+ ## Block
+ ![image](https://user-images.githubusercontent.com/9009522/147846833-24aed366-2a4e-4d9c-9986-b3bf0a043423.png)
+ ## Chain
+ ![image](https://user-images.githubusercontent.com/9009522/147846836-f9e96ccf-957e-4cbc-958c-2c0accbe6c9b.png)
