@@ -61,6 +61,8 @@ start()
 
 
 # BlockChain
+* 区块链本质上就是一个链表
+* 下区块存有上区块hash
 
  ## Block
  ![image](https://user-images.githubusercontent.com/9009522/147846833-24aed366-2a4e-4d9c-9986-b3bf0a043423.png)
