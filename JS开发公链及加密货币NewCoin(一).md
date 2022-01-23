@@ -1,4 +1,5 @@
-
+# Archeture Diagram
+ ![image](https://github.com/chankamlam/js-blockchain/blob/main/doc/architecture.drawio.png?raw=true)
 # P2P = Peer to Peer
  ![image](https://user-images.githubusercontent.com/9009522/147846868-1c1069d6-e9fd-4200-9561-7a9b1b883852.png)
 https://blog.csdn.net/c_base_jin/article/details/97616341
