@@ -9,6 +9,7 @@
  
 # P2P = Peer to Peer
  ![image](https://steemitimages.com/1280x0/https://cdn.steemitimages.com/DQmZAFtWv5imtESqJdab7kZiCycT5FMKutoda2yvtBR6Ds2/peer-to-peer-network-1.png)
+ ![image](https://pic3.zhimg.com/v2-f8d912720a8c839e2267433e4ddda296_r.jpg)
 ## Ref Paper
 https://steemit.com/networking/@alikhan91/what-is-p2p-peer-to-peer-network
  
