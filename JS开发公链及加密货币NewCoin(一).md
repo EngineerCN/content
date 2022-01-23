@@ -1,7 +1,18 @@
 # Archeture Diagram
+* Block = 区块
+* Chain = 链
+* P2P = 对等网络/网形网络
+* Common = 公共模块
+
  ![image](https://github.com/chankamlam/js-blockchain/blob/main/doc/architecture.drawio.png?raw=true)
+ 
+ 
 # P2P = Peer to Peer
- ![image](https://user-images.githubusercontent.com/9009522/147846868-1c1069d6-e9fd-4200-9561-7a9b1b883852.png)
+ ![image](https://steemitimages.com/1280x0/https://cdn.steemitimages.com/DQmZAFtWv5imtESqJdab7kZiCycT5FMKutoda2yvtBR6Ds2/peer-to-peer-network-1.png)
+## Ref Paper
+https://steemit.com/networking/@alikhan91/what-is-p2p-peer-to-peer-network
+ 
+### UDP
 https://blog.csdn.net/c_base_jin/article/details/97616341
 
 以下是对UDP三种通信方式概念说明
@@ -12,7 +23,7 @@ https://blog.csdn.net/c_base_jin/article/details/97616341
 
 * 组播，一对多的通信方式，将网络上的主机进行逻辑上的分组，通信只会在同一个分组上面进行收发消息
 
-## 多播
+#### 多播
 ```
 
 const dgram = require('dgram')
