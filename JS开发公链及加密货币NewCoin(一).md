@@ -1,7 +1,7 @@
 # Archeture Diagram
 * Block = 区块
 * Chain = 链
-* P2P = 对等网络/网形网络
+* P2P = 对等网络/网状网络
 * Common = 公共模块
 
  ![image](https://github.com/chankamlam/js-blockchain/blob/main/doc/architecture.drawio.png?raw=true)
