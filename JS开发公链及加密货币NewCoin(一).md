@@ -79,7 +79,7 @@ const dgram = require('dgram')
 
 const server = dgram.createSocket('udp4');
 const port = 41234
-const multicastAddr = '225.255.255.255';
+const multicastAddr = '255.255.255.255';
 
 const broadcast = (data) => {
     server.send("",port,multicastAddr);
