@@ -71,6 +71,52 @@ start()
 
 ```
 
+#### 多播
+```
+
+const dgram = require('dgram')
+
+const server = dgram.createSocket('udp4');
+const port = 41234
+const multicastAddr = '225.255.255.255';
+
+const broadcast = (data) => {
+    server.send("",port,multicastAddr);
+};
+
+const start = ()=>{
+    server.on('close',()=>{
+        console.log(`Server closed`);
+    })
+
+    server.on('error', (err) => {
+      console.log(`server error:\n${err.stack}`);
+      server.close();
+    });
+
+    server.on('message', (msg, rinfo) => {
+        console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+    });
+
+    server.on('listening', () => {
+      server.setBroadcast(true);
+      server.setTTL(255);
+      const address = server.address();
+  
+      // 定时发消息
+      setInterval(()=>{
+        broadcast()
+      },1000)
+      
+      console.log(`server listening ${address.address}:${address.port}`);
+    });
+    
+    server.bind(port);
+
+}
+start()
+
+```
 
 # BlockChain
 * 区块链本质上就是一个链表
