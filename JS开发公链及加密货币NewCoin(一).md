@@ -71,7 +71,7 @@ start()
 
 ```
 
-#### 多播
+#### 广播
 ```
 
 const dgram = require('dgram')
