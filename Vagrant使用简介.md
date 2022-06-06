@@ -1,4 +1,4 @@
-# Vagrant解决什么问题
+# What does Vagrant do
 
 ### *Problems*
 + 怎么快速部署虚拟机
@@ -27,5 +27,5 @@
 + Install Qemu
 + Install Vagrant plugin for qemu
 
-# Vagrant指令
+# Vagrant Cammand
 # Vagrantfile
