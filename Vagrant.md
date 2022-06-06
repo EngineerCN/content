@@ -20,8 +20,19 @@ https://app.vagrantup.com/boxes/search
 ### *Install Vagrant In Windows*
 
 + Install Vmware
+  ```
+  winget install vmware
+  winget install vagrant
+  ```
 + Install Vagrant plugin for vmware
+  ```
+  vagrant plugin install vagrant-vmware-destop
+  ```
 + Vagrant Install Ubuntu
+  ```
+  vagrant init generic/ubuntu2010
+  vagrant up --provider vmware_desktop
+  ```
 
 
 ### *Install Vagrant In Linux*
