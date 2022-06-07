@@ -61,7 +61,13 @@ i use ubuntu here, if u use other linux system that u need to switch to differen
 ### *Install Vagrant In MacOS(M1)*
 
 + Install Qemu
+  ```
+  brew install qemu
+  brew install vagrant
+  ```
 + Install Vagrant plugin for qemu
-
+  ```
+  vagrant plugin install vagrant-qemu 
+  ```
 # Vagrant Cammand
 # Vagrantfile
