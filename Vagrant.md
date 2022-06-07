@@ -1,4 +1,4 @@
-# What does Vagrant do
+# Why Vagrant
 
 ### *Problems:*
 + 怎么快速部署虚拟机
