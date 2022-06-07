@@ -7,7 +7,8 @@
 
 ### *Solution:*
 
-![vagrant drawio](https://user-images.githubusercontent.com/9009522/172183965-4dc5b438-8c1c-415b-80d1-3fb05446dfde.png)
+![image](https://user-images.githubusercontent.com/9009522/172375429-358df76e-3a33-4386-b536-b5d5edaf7f12.png)
+
 
 ### *Ref:*
 
@@ -19,14 +20,17 @@ https://app.vagrantup.com/boxes/search
 
 ### *Install Vagrant In Windows*
 
+for winget, u need to install "App Installer" in App Store of Windows, after that u can run winget in "cmd" or "powershell"
+
 + Install Vmware
   ```
-  winget install vmware
+  winget install VMware Wokstation
   winget install vagrant
   ```
 + Install Vagrant plugin for vmware
   ```
-  vagrant plugin install vagrant-vmware-destop
+  vagrant plugin install vagrant-vmware-desktop
+  vagrant plugin install vagrant-vmware-utility
   ```
 + Vagrant Install Ubuntu
   ```
@@ -36,6 +40,7 @@ https://app.vagrantup.com/boxes/search
 
 
 ### *Install Vagrant In Linux*
+i use ubuntu here, if u use other linux system that u need to switch to different linux package mangament tools like "yum","dnf",etc...
 
 + Install Virtualbox
   ```
