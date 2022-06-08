@@ -62,6 +62,7 @@ i use ubuntu here, if u use other linux system that u need to switch to differen
   ```
 
 ### *Install Vagrant In MacOS(M1)*
+for MacOS, we can use "Homebrew" or "Macports" for package management.
 
 + Install Qemu
   ```
