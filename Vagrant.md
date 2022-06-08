@@ -69,6 +69,8 @@ for MacOS, we can use "Homebrew" or "Macports" for package management.
   brew install qemu
   brew install vagrant
   ```
++ Config File Sharing of MacOS
+
 + Install Vagrant plugin for qemu
   ```
   vagrant plugin install vagrant-qemu 
