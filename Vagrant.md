@@ -30,8 +30,11 @@ for winget, u need to install "App Installer" in App Store of Windows, after tha
 + Install Vagrant plugin for vmware
   ```
   vagrant plugin install vagrant-vmware-desktop
-  vagrant plugin install vagrant-vmware-utility
   ```
++ Manual Install vagrant-vmware-utility
+
+  https://www.vagrantup.com/vmware/downloads
+  
 + Vagrant Install Ubuntu
   ```
   vagrant init generic/ubuntu2010
