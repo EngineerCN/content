@@ -27,4 +27,25 @@ server.listen(3000,()=>{
 docker run -itd -v $(pwd)/express:/express -p 3000:3000 node
 ```
 # Express Feature
-# 
+#### app.use
+#### app.set
+```
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+```
+#### app.METHOD(get/post/put/delete/all)
+```
+app.post('/', (req, res) => {
+  res.send('Got a POST request')
+})
+app.put('/user', (req, res) => {
+  res.send('Got a PUT request at /user')
+})
+app.delete('/user', (req, res) => {
+  res.send('Got a DELETE request at /user')
+})
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+```
