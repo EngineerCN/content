@@ -47,12 +47,7 @@ app.get('/', (req, res) => {
 
 app.listen(3000)
 ```
-#### app.set
-```
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
-```
 #### app.METHOD ( METHOD => get/post/put/delete/all )
 ```
 const express = require('express')
@@ -72,4 +67,11 @@ app.get('/', (req, res) => {
 })
 
 app.listen(3000)
+```
+
+#### app.set
+```
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 ```
