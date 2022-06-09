@@ -28,6 +28,25 @@ docker run -itd -v $(pwd)/express:/express -p 3000:3000 node
 ```
 # Express Feature
 #### app.use
+```
+const express = require('express')
+const app = express()
+
+const requestTime = function (req, res, next) {
+  req.requestTime = Date.now()
+  next()
+}
+
+app.use(requestTime)
+
+app.get('/', (req, res) => {
+  let responseText = 'Hello World!<br>'
+  responseText += `<small>Requested at: ${req.requestTime}</small>`
+  res.send(responseText)
+})
+
+app.listen(3000)
+```
 #### app.set
 ```
 app.set('views', path.join(__dirname, 'views'));
