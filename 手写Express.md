@@ -77,5 +77,11 @@ app.set('view engine', 'ejs');
 + Express()
 + Application
 + Request
+  + req.app
+  + req.body
+  + req.query
 + Response
+  + res.app
+  + res.end
+  + res.json
 + Router
