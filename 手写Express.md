@@ -57,6 +57,7 @@ app.set('view engine', 'ejs');
 ```
 const express = require('express')
 const app = express()
+
 app.post('/', (req, res) => {
   res.send('Got a POST request')
 })
@@ -69,5 +70,6 @@ app.delete('/user', (req, res) => {
 app.get('/', (req, res) => {
   res.send('Got a GET request')
 })
+
 app.listen(3000)
 ```
