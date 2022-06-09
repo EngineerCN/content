@@ -53,7 +53,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 ```
-#### app.METHOD(get/post/put/delete/all)
+#### app.METHOD ( METHOD => get/post/put/delete/all )
 ```
 app.post('/', (req, res) => {
   res.send('Got a POST request')
