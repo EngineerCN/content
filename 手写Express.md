@@ -74,7 +74,9 @@ app.set('view engine', 'ejs');
 
 ```
 #### Express Objects
-+ Express()
++ Express
+  + express.Router
+  + express.static
 + Application
   + app.use
   + app.listen
