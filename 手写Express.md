@@ -76,6 +76,9 @@ app.set('view engine', 'ejs');
 #### Express Objects
 + Express()
 + Application
+  + app.use
+  + app.listen
+  + app.set
 + Request
   + req.app
   + req.body
