@@ -14,7 +14,7 @@ const server = http.createServer((req,res)=>{
   res.end("ok")
 })
 
-server.lishten(3000,()=>{
+server.listen(3000,()=>{
   console.log("Server start on port 3000......")
 })
 ```
