@@ -40,9 +40,16 @@ const requestTime = function (req, res, next) {
 app.use(requestTime)
 
 app.get('/', (req, res) => {
-  let responseText = 'Hello World!<br>'
-  responseText += `<small>Requested at: ${req.requestTime}</small>`
-  res.send(responseText)
+  res.send(`TimeStamp = > ${req.requestTime} `)
+})
+
+app.post('/',(req,res)=>{
+  let data = [{
+    "name":"A"
+  },{
+    "name":"B"
+  }]
+  res.json(data)
 })
 
 app.listen(3000)
