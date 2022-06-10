@@ -111,7 +111,7 @@ app.listen(3000)
   + res.end
   + res.json
 + Router
-# Express V0.1]
+# Express V0.1
 #### express.js
 ```
 var express = {
