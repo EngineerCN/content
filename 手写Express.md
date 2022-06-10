@@ -43,15 +43,6 @@ app.get('/', (req, res) => {
   res.send(`TimeStamp = > ${req.requestTime} `)
 })
 
-app.post('/',(req,res)=>{
-  let data = [{
-    "name":"A"
-  },{
-    "name":"B"
-  }]
-  res.json(data)
-})
-
 app.listen(3000)
 ```
 #### app.METHOD ( METHOD => get/post/put/delete/all )
