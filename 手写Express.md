@@ -45,26 +45,7 @@ app.get('/', (req, res) => {
 
 app.listen(3000)
 ```
-```
-const express = require('express')
-const app = express()
 
-const users = express.Router()
-
-users.get('/', function(req, res, next) {
-  res.send('users.....')
-})
-
-const roles = express.Router()
-roles.post('/',(req,res)=>{
-  res.send('roles....')
-})
-
-app.use('/user',users)
-app.use('/role',roles)
-
-app.listen(3000)
-```
 #### app.METHOD ( METHOD => get/post/put/delete/all )
 ```
 const express = require('express')
@@ -91,6 +72,28 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 ```
+#### router
+```
+const express = require('express')
+const app = express()
+
+const users = express.Router()
+
+users.get('/', function(req, res, next) {
+  res.send('users.....')
+})
+
+const roles = express.Router()
+roles.post('/',(req,res)=>{
+  res.send('roles....')
+})
+
+app.use('/user',users)
+app.use('/role',roles)
+
+app.listen(3000)
+```
+
 #### Express Objects
 + Express
   + express.Router
