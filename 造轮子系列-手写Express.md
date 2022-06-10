@@ -177,6 +177,47 @@ express.use(fn1)
 express.use(fn2)
 express.handle()
 ```
+# Express V0.2
+### express.js
+```
+var express = {
+	mws:[],
+	idx:0
+}
+express.use = (fn)=>{
+	express.mws.push(fn)
+}
+express.handle = (fn)=>{
+	let idx = express.idx++
+	let len = express.mws.length
+	if(idx===len) {
+		fn()
+	}else{
+		express.mws[idx](()=>{express.handle(idx)})	
+	}
+
+}
+module.exports = express
+```
+### index.js
+```
+const express = require('./express.js')
+const fn1 = (req,res,next)=>{
+	console.log('fn1 start...')
+	next()
+	console.log('fn1 end...')
+}
+const fn2 = (req,res,next)=>{
+	console.log('fn2 start...')
+	next()
+	console.log('fn2 end...')
+}
+express.use(fn1)
+express.use(fn2)
+express.handle({},{},()=>{
+	console.log('core layer')
+})
+```
 
 ### Express Objects
 + Express
