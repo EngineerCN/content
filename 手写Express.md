@@ -125,7 +125,6 @@ const mw4= (req,res,next)=>{
 app.use(mw1)
 app.use(mw2)
 app.get('/',(req,res,next)=>{
-	next()
 	console.log('start...')
 	res.end('ok')
 	console.log('end...')
