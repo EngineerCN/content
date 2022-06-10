@@ -1,6 +1,6 @@
-# OpenSource Framework Modles
+# OpenSource Framework Models
 
-#### Start Modle & Pipeline Modle
+#### Start Model & Pipeline Model
 
 ![image](https://user-images.githubusercontent.com/9009522/172780013-b091d4d9-fd6c-40eb-a7c6-196201cafcd5.png)
 
@@ -93,24 +93,50 @@ app.use('/role',roles)
 
 app.listen(3000)
 ```
+### 
+```
+const express = require('express')
+const app = express()
+const mw1 = (req,res,next)=>{
+	console.log('mw1 start..')
+	next()
+	console.log('mw1 end..')
+}
 
-#### Express Objects
-+ Express
-  + express.Router
-  + express.static
-+ Application
-  + app.use
-  + app.listen
-  + app.set
-+ Request
-  + req.app
-  + req.body
-  + req.query
-+ Response
-  + res.app
-  + res.end
-  + res.json
-+ Router
+const mw2= (req,res,next)=>{
+	console.log('mw2 start..')
+	next()
+	console.log('mw2 end..')
+}
+const mw3 = (req,res,next)=>{
+	console.log('mw3 start..')
+	next()
+	console.log('mw3 end..')
+}
+
+const mw4= (req,res,next)=>{
+	console.log('mw4 start..')
+	next()
+	console.log('mw4 end..')
+}
+app.use(mw1)
+app.use(mw2)
+app.get('/',(req,res,next)=>{
+	next()
+	console.log('start...')
+	res.end('ok')
+	console.log('end...')
+})
+const users = express.Router()
+users.get('/',[mw3,mw4],(req,res)=>{
+	console.log('start...(from user)')
+	res.send('users...')
+	console.log('end...(from user)')
+	})
+app.use('/user',users)
+app.listen(3000)
+```
+
 # Express V0.1
 #### express.js
 ```
@@ -146,3 +172,21 @@ express.use(fn1)
 express.use(fn2)
 express.handle()
 ```
+
+#### Express Objects
++ Express
+  + express.Router
+  + express.static
++ Application
+  + app.use
+  + app.listen
+  + app.set
++ Request
+  + req.app
+  + req.body
+  + req.query
++ Response
+  + res.app
+  + res.end
+  + res.json
++ Router
