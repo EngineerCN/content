@@ -113,6 +113,36 @@ app.listen(3000)
 + Router
 # Express V0.1]
 #### express.js
-
+```
+var express = {
+	mws:[],
+	idx:0
+}
+express.use = (fn)=>{
+	express.mws.push(fn)
+}
+express.handle = ()=>{
+	let idx = express.idx++
+	let len = express.mws.length
+	if(idx===len) return
+	express.mws[idx](()=>{express.handle(idx)})
+}
 module.exports = express
+```
+#### index.js
+```
+const express = require('./express.js')
+const fn1 = (next)=>{
+	console.log('fn1 start...')
+	next()
+	console.log('fn1 end...')
+}
+const fn2 = (next)=>{
+	console.log('fn2 start...')
+	next()
+	console.log('fn2 end...')
+}
+express.use(fn1)
+express.use(fn2)
+express.handle()
 ```
