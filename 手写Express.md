@@ -22,12 +22,12 @@ server.listen(3000,()=>{
   console.log("Server start on port 3000......")
 })
 ```
-#### Docker run Index.js
+### Docker run Index.js
 ```
 docker run -itd -v $(pwd)/express:/express -p 3000:3000 node
 ```
 # Express Feature
-#### app.use
+### app.use
 ```
 const express = require('express')
 const app = express()
@@ -46,7 +46,7 @@ app.get('/', (req, res) => {
 app.listen(3000)
 ```
 
-#### app.METHOD ( METHOD => get/post/put/delete/all )
+### app.METHOD ( METHOD => get/post/put/delete/all )
 ```
 const express = require('express')
 const app = express()
@@ -66,13 +66,13 @@ app.get('/', (req, res) => {
 
 app.listen(3000)
 ```
-#### app.set
+### app.set
 ```
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 ```
-#### router
+### router
 ```
 const express = require('express')
 const app = express()
@@ -94,9 +94,7 @@ app.use('/role',roles)
 app.listen(3000)
 ```
 # Express Model
-![express Diagram drawio](https://user-images.githubusercontent.com/9009522/173109990-87f54a00-25ad-4501-92fe-2abbbb247e25.png)
-
-#### onion model
+### model analysis
 ```
 const express = require('express')
 const app = express()
@@ -140,9 +138,12 @@ users.get('/',[mw3,mw4],(req,res)=>{
 app.use('/user',users)
 app.listen(3000)
 ```
+### onion model
+![express Diagram drawio](https://user-images.githubusercontent.com/9009522/173109990-87f54a00-25ad-4501-92fe-2abbbb247e25.png)
+
 
 # Express V0.1
-#### express.js
+### express.js
 ```
 var express = {
 	mws:[],
@@ -159,7 +160,7 @@ express.handle = ()=>{
 }
 module.exports = express
 ```
-#### index.js
+### index.js
 ```
 const express = require('./express.js')
 const fn1 = (next)=>{
@@ -177,7 +178,7 @@ express.use(fn2)
 express.handle()
 ```
 
-#### Express Objects
+### Express Objects
 + Express
   + express.Router
   + express.static
