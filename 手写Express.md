@@ -94,7 +94,7 @@ app.use('/role',roles)
 app.listen(3000)
 ```
 # Express Model
-### model analysis
+### Model Analysis
 ```
 const express = require('express')
 const app = express()
@@ -138,7 +138,7 @@ users.get('/',[mw3,mw4],(req,res)=>{
 app.use('/user',users)
 app.listen(3000)
 ```
-### onion model
+### Onion Model
 ![express Diagram drawio](https://user-images.githubusercontent.com/9009522/173109990-87f54a00-25ad-4501-92fe-2abbbb247e25.png)
 
 
