@@ -182,20 +182,21 @@ express.handle()
 ```
 var express = {
 	mws:[],
-	idx:0
 }
 express.use = (fn)=>{
 	express.mws.push(fn)
 }
 express.handle = (fn)=>{
-	let idx = express.idx++
+	let idx = 0
 	let len = express.mws.length
-	if(idx===len) {
-		fn()
-	}else{
-		express.mws[idx](()=>{express.handle(idx)})	
+	function next(){
+		if(idx<len){
+			express.mws[idx++]({},{},next)
+		}else{
+			fn()
+		}
 	}
-
+	next()
 }
 module.exports = express
 ```
@@ -214,9 +215,10 @@ const fn2 = (req,res,next)=>{
 }
 express.use(fn1)
 express.use(fn2)
-express.handle({},{},()=>{
-	console.log('core layer')
+express.handle((req,res,next)=>{
+	console.log('<EXECUTE>')
 })
+
 ```
 
 ### Express Objects
