@@ -173,8 +173,14 @@ const fn2 = (next)=>{
 	next()
 	console.log('fn2 end...')
 }
+const fn3 = (next)=>{
+        console.log('fn3 start...')
+	next()
+	console.log('fn3 end...')
+}
 express.use(fn1)
 express.use(fn2)
+express.use(fn3)
 express.handle()
 ```
 # Express Onion Model V0.2
