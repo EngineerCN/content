@@ -184,7 +184,10 @@ express.use(fn3)
 express.handle()
 ```
 ### flow diagram
+
 ![image](https://user-images.githubusercontent.com/9009522/173189318-1dd0cf6f-08ba-4dba-ad81-e99fa498ad43.png)
+
+
 
 # Express Onion Model V0.2
 ### express.js
