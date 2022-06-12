@@ -214,6 +214,7 @@ express.listen = (port)=>{
 	var req = {parms:{}}
 	var res = {}
 	express.handle(req,res,()=>{
+		console.log(req)
 		console.log('--CORE--')
 	})	
 }
