@@ -213,8 +213,8 @@ express.handle = (req,res,fn)=>{
 express.listen = (port)=>{
 	var req = {parms:{}}
 	var res = {}
-	express.handle((req,res,next)=>{
-		console.log('<EXECUTE>')
+	express.handle(req,res,()=>{
+		console.log('--CORE--')
 	})	
 }
 module.exports = express
