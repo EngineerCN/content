@@ -198,12 +198,12 @@ var express = {
 express.use = (fn)=>{
 	express.mws.push(fn)
 }
-express.handle = (fn)=>{
+express.handle = (req,res,fn)=>{
 	let idx = 0
 	let len = express.mws.length
 	function next(){
 		if(idx<len){
-			express.mws[idx++]({},{},next)
+			express.mws[idx++](req,res,next)
 		}else{
 			fn()
 		}
@@ -216,18 +216,22 @@ module.exports = express
 ```
 const express = require('./express.js')
 const fn1 = (req,res,next)=>{
+	req.parms['x'] = 1
 	console.log('fn1 start...')
 	next()
 	console.log('fn1 end...')
 }
 const fn2 = (req,res,next)=>{
+	req.parms['y'] = 2
 	console.log('fn2 start...')
 	next()
 	console.log('fn2 end...')
 }
 express.use(fn1)
 express.use(fn2)
-express.handle((req,res,next)=>{
+var req = {parms:{}}
+var res = {}
+express.handle(({},{},next)=>{
 	console.log('<EXECUTE>')
 })
 
