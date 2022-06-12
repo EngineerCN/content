@@ -213,7 +213,7 @@ express.handle = (req,res,fn)=>{
 express.listen = (port)=>{
 	var req = {parms:{}}
 	var res = {}
-	express.handle(({},{},next)=>{
+	express.handle((req,res,next)=>{
 		console.log('<EXECUTE>')
 	})	
 }
