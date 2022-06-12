@@ -210,6 +210,13 @@ express.handle = (req,res,fn)=>{
 	}
 	next()
 }
+express.listen = (port)=>{
+	var req = {parms:{}}
+	var res = {}
+	express.handle(({},{},next)=>{
+		console.log('<EXECUTE>')
+	})	
+}
 module.exports = express
 ```
 ### index.js
@@ -229,11 +236,7 @@ const fn2 = (req,res,next)=>{
 }
 express.use(fn1)
 express.use(fn2)
-var req = {parms:{}}
-var res = {}
-express.handle(({},{},next)=>{
-	console.log('<EXECUTE>')
-})
+express.listen(3000)
 
 ```
 # Express Onion Model V0.3
