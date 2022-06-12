@@ -261,6 +261,7 @@ express.handle = fn=>{
 		mountMW(path,fn)
 	}
 })
+module.exports=express
 ```
 ### index.js
 ```
