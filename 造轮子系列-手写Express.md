@@ -280,6 +280,44 @@ express.listen = port =>{
 }
 module.exports=express
 ```
+```
+class Express{
+	constructor(){
+		this.mws=[];
+		['post','get','put','delete'].forEach(method=>{
+			this[method] = (path,fn)=>{
+				this.mountMW(path,fn)
+			}
+		})
+	}
+	mountMW(path,fn){
+		this.mws.push({path,fn})
+	}
+	use(fn){
+		this.mountMW('/',fn)
+	}
+	handle(req,res,fn){
+		let idx = 0
+		let len = this.mws.length
+		const next = ()=>{
+			if(idx<len){
+				this.mws[idx++].fn(req,res,next)
+			}else{
+				fn()
+			}
+		}
+		next()
+	}
+	listen(port){
+		var req = {}
+		var res = {}
+		this.handle(req,res,()=>{
+			console.log('--CORE--')
+		})
+	}
+}
+module.exports = Express
+```
 ### index.js
 ```
 const express = require('./express.js')
@@ -301,6 +339,28 @@ express.get('/user',(req,res,next)=>{
 	console.log('get /user end...')
 })
 express.listen(3000)
+```
+```
+const express = require('./express1.js')
+const app = new express()
+const fn1 = (req,res,next)=>{
+	console.log('fn1 start...')
+	next()
+	console.log('fn1 end...')
+}
+const fn2 = (req,res,next)=>{
+	console.log('fn2 start...')
+	next()
+	console.log('fn2 end...')
+}
+app.use(fn1)
+app.use(fn2)
+app.get('/user',(req,res,next)=>{
+	console.log('get /user start...')
+	next()
+	console.log('get /user end...')
+})
+app.listen(3000)
 ```
 ### Express Objects
 + Express
