@@ -241,6 +241,38 @@ express.listen(3000)
 
 ```
 # Express Onion Model V0.3
+### router & minddleware
+```
+const express = require('express')
+const app = express()
+const mw1 = (req,res,next)=>{
+	console.log('mw1 start..')
+	next()
+
+	console.log('mw1 end..')
+}
+
+const mw2= (req,res,next)=>{
+	console.log('mw2 start..')
+	next()
+	console.log('mw2 end..')
+}
+
+app.get('/',(req,res,next)=>{
+	console.log('first router start...')
+	next()
+	console.log('first router end...')
+})
+app.get('/',(req,res,next)=>{
+	console.log('second router start...')
+	res.end('ok')
+	console.log('second router end...')
+})
+app.use(mw1)
+app.use(mw2)
+app.listen(3000)
+```
+
 ### express.js
 ```
 var express = {
