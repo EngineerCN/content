@@ -252,23 +252,32 @@ const mountMW = (path,fn)=>{
 express.use = fn=>{
 	mountMW('/',fn)
 }
-express.handle = fn=>{
+express.handle = (req,res,fn) =>{
 	let idx = 0
 	let len = express.mws.length
 	const next = ()=>{
 		if(idx<len){
-			express.mws[idx++].fn({},{},next)
+			express.mws[idx++].fn(req,res,next)
 		}else{
 			fn()
 		}
 	}
 	next()
 }
-['post','get','put','delete'].forEach(m=>{
-	express[m] = (path,fn)=>{
+
+['post','get','put','delete'].forEach(method=>{
+	express[method] = (path,fn)=>{
 		mountMW(path,fn)
 	}
 })
+express.listen = port =>{
+	var req = {}
+	var res = {}
+	express.handle(req,res,()=>{
+		console.log('--CORE--')
+	})
+	
+}
 module.exports=express
 ```
 ### index.js
@@ -291,9 +300,7 @@ express.get('/user',(req,res,next)=>{
 	next()
 	console.log('get /user end...')
 })
-express.handle((req,res,next)=>{
-	console.log('<EXECUTE>')
-})
+express.listen(3000)
 ```
 ### Express Objects
 + Express
