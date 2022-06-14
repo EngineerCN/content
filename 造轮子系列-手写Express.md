@@ -426,13 +426,12 @@ express.handle = (req,res,fn)=>{
 	}
 })
 express.listen = port=>{
-	var port = 3000
 	const server = http.createServer((req,res)=>{
 		express.handle(req,res,()=>{
 			console.log('--CORE--')
 		})
 	}).listen(port,()=>{
-		console.log(`Server start on port ${port}.....`,3000)
+		console.log(`Server start on port ${port}.....`,port)
 	})
 }
 module.exports = express
@@ -499,11 +498,10 @@ express.handle = (req,res,fn)=>{
 	}
 })
 express.listen = port=>{
-	var port = 3000
 	const server = http.createServer((req,res)=>{
 		express.handle(req,res,()=>{res.end('404')})
 	}).listen(port,()=>{
-		console.log(`Server start on port ${port}.....`,3000)
+		console.log(`Server start on port ${port}.....`,port)
 	})
 }
 module.exports = express
