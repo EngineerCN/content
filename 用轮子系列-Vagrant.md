@@ -64,16 +64,17 @@ i use ubuntu here, if u use other linux system that u need to switch to differen
 ### *Install Vagrant In MacOS(M1)*
 for MacOS, we can use "Homebrew" or "Macports" for package management.
 
-+ Install Qemu
++ Install Docker
   ```
-  brew install qemu
+  brew install --cask docker
   brew install vagrant
   ```
 + Config File Sharing of MacOS
 
-+ Install Vagrant plugin for qemu
++ Install Ubuntu
   ```
-  vagrant plugin install vagrant-qemu 
+  vagrant init tknerr/baseimage-ubuntu-18.04
+  vagrant up --provider docker
   ```
 # Vagrant Cammand
 # Vagrantfile
