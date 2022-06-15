@@ -69,7 +69,6 @@ for MacOS, we can use "Homebrew" or "Macports" for package management.
   brew install --cask docker
   brew install vagrant
   ```
-+ Config File Sharing of MacOS
 
 + Install Ubuntu
   ```
