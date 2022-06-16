@@ -76,5 +76,17 @@ for MacOS, we can use "Homebrew" or "Macports" for package management.
   vagrant up --provider docker
   ```
 # Vagrant Cammand
+
+```
+vagrant status
+```
+停止
+```
+vagrant halt
+```
+重启
+```
+vagrant reload
+```
 # Vagrantfile
 # Create Your Own Box
