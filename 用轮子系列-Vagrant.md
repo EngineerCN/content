@@ -108,6 +108,18 @@ vagrant suspend
 ```
 vagrant resume
 ```
+### ssh到虚拟/容器实例
+```
+vagrant ssh
+```
+### rdp到虚拟/容器实例
+```
+vagrant rdp
+```
+### 销毁
+```
+vagrant destroy
+```
 
 # Vagrantfile
 # Create Your Own Box
