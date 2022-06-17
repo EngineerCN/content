@@ -19,10 +19,11 @@
 + AUFS (联合文件系统)
 
 # Docker V0.1
+
 ### Layer Diagram
 ![image](https://user-images.githubusercontent.com/9009522/174298433-8b73ffa2-a5a4-4d94-a7f3-9cb7dd043cae.png)
 
-
+### Docker Command
 ```
 docker run --rm -it ubuntu /bin/bash
 ```
