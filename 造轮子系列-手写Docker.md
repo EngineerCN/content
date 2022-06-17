@@ -13,7 +13,7 @@
 
 ![576507-docker1](https://user-images.githubusercontent.com/9009522/173328283-bde7fc74-f731-4dd9-8372-2b16b88103de.png)
 
-# Docker Technology
+# Container Technology
 + Namespace (隔离)
 + Cgroup (限制)
 + AUFS (联合文件系统)
