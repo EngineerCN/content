@@ -2,9 +2,10 @@
 + 组件依赖与部署便利性
 + 资源使用成效
 + 应用可移植性
+#### _虚拟技术是系统颗粒度，容器技术是进程颗粒度。_
 
 # Docker Architecture
-#### _虚拟技术是系统颗粒度，容器技术是进程颗粒度。_
+
 
 ![pasted image 0](https://user-images.githubusercontent.com/9009522/173328229-19585544-4e9c-4661-8fc5-ca08254eba81.png)
 
