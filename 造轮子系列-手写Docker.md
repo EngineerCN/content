@@ -129,5 +129,27 @@ For more details see unshare(1)
 
 ### Docker V0.2
 ```
+import(
+	"os"
+	"fmt"
+	"os/exec"
+)
+
+func main(){
+	fmt.Println(os.Args)
+	switch os.Args[1]{
+		case "run":
+			run()
+		default:
+			panic("have not define")
+	}
+}
+func run(){
+	cmd := exec.Command(os.Args[2])
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Run()
+}
 ```
 
