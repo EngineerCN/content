@@ -64,3 +64,16 @@ func run(){
 }
 
 ```
+# Docker V0.2
+
+| Namespace类型 | 系统调用参数 | 内核版本 |
+|:--:|:--:|:--:|
+| Mount Namespace | CLONE NEWNS | 2.4.19 |
+| UTS Namespace|CLONE NEWUTS|2.6.19|
+| IPC Namespace|CLONE NEWIPC|2.6.19|
+| PID Namespace|CLONE NEWPID|2.6.24|
+| Network Namespace|CLONE NEWNET|2.6.29|
+| User Namespace|CLONE NEWUSER|3.8|
+
+Linux kernel Clone flags https://man7.org/linux/man-pages/man2/clone.2.html
+
