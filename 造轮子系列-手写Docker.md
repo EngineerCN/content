@@ -158,6 +158,20 @@ func run(){
 	}
 }
 ```
+### Build in Container with err
+```
+panic: fork/exec /bin/sh: operation not permitted
+
+goroutine 1 [running]:
+main.run()
+	/go/src/main.go:28 +0x15c
+main.main()
+	/go/src/main.go:13 +0xcc
+```
+fix izzuse
+```
+docker run -itd --privileged golang
+```
 
 exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
 
