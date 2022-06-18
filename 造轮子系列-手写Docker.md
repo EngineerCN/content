@@ -146,10 +146,15 @@ func main(){
 }
 func run(){
 	cmd := exec.Command(os.Args[2])
+	cmd.SysProcAttr = &syscall.SysProAttr{
+		Cloneflags: syscall.CLONE_NEWUTS
+	}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	cmd.Run()
+	if err:=cmd.Run(); err!=nil{
+		panic(err)
+	}
 }
 ```
 
