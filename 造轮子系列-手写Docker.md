@@ -157,6 +157,8 @@ func run(){
 	}
 }
 ```
-https://pkg.go.dev/os/exec@go1.18.3#Command
-https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
+
+exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
+
+SysProcAttr: https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
 
