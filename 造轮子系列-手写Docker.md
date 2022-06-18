@@ -65,7 +65,7 @@ func run(){
 
 ```
 # Docker V0.2
-
+### Linux Namespace
 | Namespace类型 | 系统调用参数 | 内核版本 |
 |:--:|:--:|:--:|
 | Mount Namespace | CLONE NEWNS | 2.4.19 |
@@ -77,6 +77,7 @@ func run(){
 
 Linux kernel Clone flags https://man7.org/linux/man-pages/man2/clone.2.html
 
+### Shell cmd to create a process with own namespace
 shell in linux
 ```
 sudo unshare --fork --pid --mount-proc bash
@@ -125,7 +126,8 @@ Options:
 
 For more details see unshare(1)
 ```
-Docker V0.2
+
+### Docker V0.2
 ```
 ```
 
