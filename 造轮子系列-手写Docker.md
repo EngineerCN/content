@@ -81,6 +81,15 @@ shell in linux
 ```
 sudo unshare --fork --pid --mount-proc bash
 ```
+run cmd in chirld & parent shell
+```
+sleep 1000 &
+```
+compare the /proc
+```
+ls -l /proc/<pid>/ns
+```
+
 Docker V0.2
 ```
 ```
