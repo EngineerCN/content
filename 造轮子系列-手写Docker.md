@@ -77,3 +77,11 @@ func run(){
 
 Linux kernel Clone flags https://man7.org/linux/man-pages/man2/clone.2.html
 
+shell in linux
+```
+sudo unshare --fork --pid --mount-proc bash
+```
+Docker V0.2
+```
+```
+
