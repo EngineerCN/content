@@ -89,7 +89,8 @@ compare the /proc
 ```
 ls -l /proc/<pid>/ns
 ```
-
+unshare --help
+```
 Usage:
  unshare [options] [<program> [<argument>...]]
 
@@ -122,8 +123,8 @@ Options:
  -h, --help                display this help
  -V, --version             display version
 
-For more details see unshare(1).
-
+For more details see unshare(1)
+```
 Docker V0.2
 ```
 ```
