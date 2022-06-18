@@ -129,6 +129,7 @@ For more details see unshare(1)
 
 ### Docker V0.2
 ```
+package main
 import(
 	"os"
 	"fmt"
@@ -147,8 +148,8 @@ func main(){
 }
 func run(){
 	cmd := exec.Command(os.Args[2])
-	cmd.SysProcAttr = &syscall.SysProAttr{
-		Cloneflags: syscall.CLONE_NEWUTS
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags: syscall.CLONE_NEWUTS,
 	}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
@@ -158,7 +159,7 @@ func run(){
 	}
 }
 ```
-### Build in Container with err
+#### Build in Container with err
 ```
 panic: fork/exec /bin/sh: operation not permitted
 
