@@ -240,3 +240,48 @@ mount -t proc proc /proc
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
+### Docker V0.3(Add NEWPID Namespace)
+```
+package main
+import(
+	"os"
+	"fmt"
+	"os/exec"
+	"syscall"
+)
+func main(){
+	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
+	switch os.Args[1]{
+		case "run":
+			run()
+		case "child":
+			child()
+		default:
+			panic("have not defined.")
+	}
+}
+func run(){
+	cmd:=exec.Command(os.Args[0],append([]string{"child"},os.Args[2])...)
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
+	}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err:=cmd.Run();err!=nil{
+		panic(err)
+	}
+}
+func child(){
+	cmd:=exec.Command(os.Args[2])
+	syscall.Sethostname([]byte("container"))
+	syscall.Mount("proc","/proc","proc",0,"")
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err:=cmd.Run();err!=nil{
+		panic(err)
+	}
+	syscall.Unmount("/proc",0)
+}
+```
