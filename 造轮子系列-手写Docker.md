@@ -247,10 +247,12 @@ func run(){
 func child(){
 	cmd:=exec.Command(os.Args[2])
 	syscall.Sethostname([]byte("container"))
+	syscall.Mount("proc","/proc","proc",0,"")
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Run()
+	syscall.Unmount("/proc",0)
 }
 ```
 ```
