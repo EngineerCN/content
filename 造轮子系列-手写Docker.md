@@ -64,7 +64,7 @@ func run(){
 }
 
 ```
-# Docker V0.2 (Add UTS Namespace)
+# Docker V0.2 
 ### Linux Namespace
 | Namespace类型 | 系统调用参数 | 内核版本 | 用途 |
 |:--:|:--:|:--:|:--:|
@@ -127,7 +127,7 @@ Options:
 For more details see unshare(1)
 ```
 
-### Docker V0.2 
+### Docker V0.2 (Add UTS Namespace)
 ```
 package main
 import(
@@ -178,4 +178,4 @@ exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
 
 SysProcAttr: https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
 
-# Docker V0.3 (Add Make/IPC Namespace/Network Namespace/)
+# Docker V0.3 
