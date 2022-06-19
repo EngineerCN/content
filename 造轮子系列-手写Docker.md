@@ -191,6 +191,28 @@ exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
 SysProcAttr: https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
 
 # Docker V0.3
+### Use make && makefile
+```
+CMD=go
+BIN_PATH=bin
+SRC_PATH=src
+
+all: clean build install
+
+build: 
+	$(CMD) build -o $(BIN_PATH)/docker $(SRC_PATH)/*
+
+install:
+	cp bin/docker /usr/bin/docker
+	cp bin/docker /usr/local/bin/docker
+
+uninstall:
+	rm -rf /usr/bin/docker /usr/local/bin/docker
+	rm -rf bin/docker
+
+clean: uninstall
+```
+### Docker V0.3
 ```
 package main
 import(
@@ -233,27 +255,6 @@ func child(){
 ```
 
 # Docker V0.4
-### Use make && makefile
-```
-CMD=go
-BIN_PATH=bin
-SRC_PATH=src
-
-all: clean build install
-
-build: 
-	$(CMD) build -o $(BIN_PATH)/docker $(SRC_PATH)/*
-
-install:
-	cp bin/docker /usr/bin/docker
-	cp bin/docker /usr/local/bin/docker
-
-uninstall:
-	rm -rf /usr/bin/docker /usr/local/bin/docker
-	rm -rf bin/docker
-
-clean: uninstall
-```
 ### proc
 
 /proc是一个虚拟文件系统,非真实文件而是开机后系统各项信息综合挂载，其中/proc/PID形式命名目录可以查看系统运行中各进程相关信息
@@ -282,7 +283,7 @@ mount -t proc proc /proc
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
-### Docker V0.3(Add NEWPID Namespace)
+### Docker V0.4(Add NEWPID Namespace)
 ```
 package main
 import(
