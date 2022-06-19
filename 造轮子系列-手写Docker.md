@@ -231,9 +231,12 @@ clean: uninstall
 |/proc/N/status|进程状态信息，比stat/statm更具可读性|
 |/proc/self|链接到当前正在运行的进程|
 ### Mount proc
+top,ps 读取/proc信息
+#### shell
 ```
 mount -t proc proc /proc
 ```
+#### go syscall.Mount
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
