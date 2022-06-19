@@ -64,7 +64,7 @@ func run(){
 }
 
 ```
-# Docker V0.2
+# Docker V0.2 (Add UTS Namespace)
 ### Linux Namespace
 | Namespace类型 | 系统调用参数 | 内核版本 | 用途 |
 |:--:|:--:|:--:|:--:|
@@ -127,7 +127,7 @@ Options:
 For more details see unshare(1)
 ```
 
-### Docker V0.2 (Add UTS Namespace)
+### Docker V0.2 
 ```
 package main
 import(
