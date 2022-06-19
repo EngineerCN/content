@@ -138,46 +138,6 @@ Options:
 
 For more details see unshare(1)
 ```
-```
-package main
-import(
-	"os"
-	"fmt"
-	"os/exec"
-	"syscall"
-)
-func main(){
-	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
-	switch os.Args[1]{
-		case "run":
-			run()
-		case "child":
-			child()
-		default:
-			panic("have not defined.")
-	}
-}
-func run(){
-	cmd:=exec.Command(os.Args[0],append([]string{"child"},os.Args[2])...)
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
-	}
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err:=cmd.Run();err!=nil{
-		panic(err)
-	}
-}
-func child(){
-	cmd:=exec.Command(os.Args[2])
-	syscall.Sethostname([]byte("container"))
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	cmd.Run()
-}
-```
 
 ### Docker V0.2 (Add UTS Namespace)
 ```
@@ -225,12 +185,54 @@ main.main()
 ```
 docker run -itd --privileged golang
 ```
-
+#### Ref
 exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
 
 SysProcAttr: https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
 
-# Docker V0.3 
+# Docker V0.3
+```
+package main
+import(
+	"os"
+	"fmt"
+	"os/exec"
+	"syscall"
+)
+func main(){
+	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
+	switch os.Args[1]{
+		case "run":
+			run()
+		case "child":
+			child()
+		default:
+			panic("have not defined.")
+	}
+}
+func run(){
+	cmd:=exec.Command(os.Args[0],append([]string{"child"},os.Args[2])...)
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
+	}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err:=cmd.Run();err!=nil{
+		panic(err)
+	}
+}
+func child(){
+	cmd:=exec.Command(os.Args[2])
+	syscall.Sethostname([]byte("container"))
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	cmd.Run()
+}
+```
+
+# Docker V0.4
 ### Use make && makefile
 ```
 CMD=go
