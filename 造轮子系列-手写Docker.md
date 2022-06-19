@@ -232,11 +232,11 @@ clean: uninstall
 |/proc/self|链接到当前正在运行的进程|
 ### Mount proc
 top,ps 读取/proc信息
-#### shell
+##### shell
 ```
 mount -t proc proc /proc
 ```
-#### go syscall.Mount
+##### go syscall.Mount
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
