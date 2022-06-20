@@ -235,7 +235,7 @@ func main(){
 func run(){
 	cmd:=exec.Command(os.Args[0],append([]string{"child"},os.Args[2])...)
 	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID|syscall.CLONE_NEWNS,
 	}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
@@ -329,7 +329,7 @@ func main(){
 func run(){
 	cmd:=exec.Command(os.Args[0],append([]string{"child"},os.Args[2])...)
 	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID|syscall.CLONE_NEWNS,
 	}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
