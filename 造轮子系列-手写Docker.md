@@ -355,7 +355,10 @@ func child(){
 	syscall.Unmount("/proc",0)
 }
 ```
-
+Need to fix issues
+```
+Error, do this: mount -t proc proc /proc
+```
 
 
 # Docker V0.5
