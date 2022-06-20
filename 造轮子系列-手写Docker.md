@@ -253,44 +253,7 @@ func child(){
 	cmd.Run()
 }
 ```
-```
-package main
-import(
-	"os"
-	"fmt"
-	"os/exec"
-	"syscall"
-)
-func main(){
-	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
-	switch os.Args[1]{
-		case "run":
-			Run()
-		case "init":
-			Init()
-		default:
-			panic("have not defined.")
-	}
-}
-func Run(){
-	cmd:=exec.Command(os.Args[0],init,os.Args[2])
-	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
-	}
-	cmd.Stdin = os.Stdin
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-	if err:=cmd.Run();err!=nil{
-		panic(err)
-	}
-}
-func Init(){
-	syscall.Sethostname([]byte("container"))
-	syscall.Mount("proc","/proc","proc",0,"")
-	syscall.Exec(os.Args[2],os.Args[2:],os.Environ())
-	syscall.Unmount("/proc",0)
-}
-```
+
 
 # Docker V0.4
 ### proc
@@ -363,6 +326,46 @@ func child(){
 	if err:=cmd.Run();err!=nil{
 		panic(err)
 	}
+	syscall.Unmount("/proc",0)
+}
+```
+
+
+```
+package main
+import(
+	"os"
+	"fmt"
+	"os/exec"
+	"syscall"
+)
+func main(){
+	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
+	switch os.Args[1]{
+		case "run":
+			Run()
+		case "init":
+			Init()
+		default:
+			panic("have not defined.")
+	}
+}
+func Run(){
+	cmd:=exec.Command(os.Args[0],init,os.Args[2])
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID,
+	}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err:=cmd.Run();err!=nil{
+		panic(err)
+	}
+}
+func Init(){
+	syscall.Sethostname([]byte("container"))
+	syscall.Mount("proc","/proc","proc",0,"")
+	syscall.Exec(os.Args[2],os.Args[2:],os.Environ())
 	syscall.Unmount("/proc",0)
 }
 ```
