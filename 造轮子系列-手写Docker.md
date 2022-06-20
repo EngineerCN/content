@@ -284,6 +284,28 @@ mount -t proc proc /proc
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
+##### mount flags
+```
+public enum MountFlags : ulong
+{
+    MS_RDONLY = 1,         // Mount read-only.
+    MS_NOSUID = 2,         // Ignore suid and sgid bits.
+    MS_NODEV = 4,         // Disallow access to device special files.
+    MS_NOEXEC = 8,         // Disallow program execution.
+    MS_SYNCHRONOUS = 16,    // Writes are synced at once.
+    MS_REMOUNT = 32,    // Alter flags of a mounted FS.
+    MS_MANDLOCK = 64,    // Allow mandatory locks on an FS.
+    S_WRITE = 128,   // Write on file/directory/symlink.
+    S_APPEND = 256,   // Append-only file.
+    S_IMMUTABLE = 512,   // Immutable file.
+    MS_NOATIME = 1024,  // Do not update access times.
+    MS_NODIRATIME = 2048,  // Do not update directory access times.
+    MS_BIND = 4096,  // Bind directory at different place.
+}; // End Enum MountFlags : ulong
+```
+##### Ref 
+https://zhuanlan.zhihu.com/p/36268333
+
 ### Docker V0.4(Add NEWPID Namespace)
 ```
 package main
