@@ -181,7 +181,7 @@ main.run()
 main.main()
 	/go/src/main.go:13 +0xcc
 ```
-#### Fix issues
+#### Solution
 ```
 docker run -itd --privileged golang
 ```
@@ -355,7 +355,7 @@ func child(){
 	syscall.Unmount("/proc",0)
 }
 ```
-Need to fix issues
+#### Need to fix issues
 ```
 Error, do this: mount -t proc proc /proc
 ```
