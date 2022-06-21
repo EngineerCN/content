@@ -364,6 +364,13 @@ Error, do this: mount -t proc proc /proc
 # Docker V0.5
 
 ```
+man 2 mount
+
+man 2 clone
+
+```
+
+```
 package main
 import(
 	"os"
