@@ -82,7 +82,7 @@ shell in linux
 ```
 sudo unshare --fork --pid --mount-proc bash
 ```
-run cmd in chirld & parent shell
+run cmd in child & parent shell
 ```
 sleep 1000 &
 ```
