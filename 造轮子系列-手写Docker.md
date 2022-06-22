@@ -446,7 +446,7 @@ func Init(){
 	syscall.Chroot("rootfs")
 	syscall.Chdir("/")
 	syscall.Mount("proc","/proc","proc",0,"")
-	if err := syscall.Exec(command, argv, os.Environ()); err != nil {
+	if err := syscall.Exec(os.Args[2],os.Args[2:],os.Environ()); err != nil {
 		panic(err)
 	}
 	syscall.Unmount("/proc",0)
