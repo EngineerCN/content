@@ -369,9 +369,7 @@ Error, do this: mount -t proc proc /proc
 
 
 # Docker V0.5
-
-
-
+### Fix the double shell problem
 ```
 package main
 import(
@@ -410,8 +408,7 @@ func Init(){
 	syscall.Unmount("/proc",0)
 }
 ```
-
-
+### Add new file system for new process
 ```
 package main
 import(
@@ -450,7 +447,7 @@ func Init(){
 	syscall.Chdir("/")
 	syscall.Mount("proc","/proc","proc",0,"")
 	syscall.Exec(os.Args[2],os.Args[2:],os.Environ())
-	syscall.Unmount("/proc",0)
+	//syscall.Unmount("/proc",0)
 }
 ```
 
