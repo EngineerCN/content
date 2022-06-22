@@ -429,7 +429,7 @@ func main(){
 	}
 }
 func Run(){
-	cmd:=exec.Command(os.Args[0],init,os.Args[2])
+	cmd:=exec.Command(os.Args[0],"init",os.Args[2])
 	cmd.SysProcAttr = &syscall.SysProcAttr{
 		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID|syscall.CLONE_NEWNS,
 	}
@@ -446,8 +446,10 @@ func Init(){
 	syscall.Chroot("rootfs")
 	syscall.Chdir("/")
 	syscall.Mount("proc","/proc","proc",0,"")
-	syscall.Exec(os.Args[2],os.Args[2:],os.Environ())
-	//syscall.Unmount("/proc",0)
+	if err := syscall.Exec(command, argv, os.Environ()); err != nil {
+		panic(err)
+	}
+	syscall.Unmount("/proc",0)
 }
 ```
 
