@@ -513,9 +513,6 @@ func Init(){
 	if err := syscall.Unmount("/proc",0); err != nil{
 		panic(err)
 	}
-	if err := os.RemoveAll(rootFolderPath); err !=nil{
-		panic(err)
-	}
 }
 func CopyFileOrDirectory(src string, dst string) error{
 	fmt.Println("Copy %s => %s",src,dst)
