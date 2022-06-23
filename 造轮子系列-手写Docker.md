@@ -482,16 +482,18 @@ func Run(){
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
-	if err:=cmd.Run();err!=nil{
+	if err:=cmd.Start();err!=nil{
 		panic(err)
 	}
+	cmd.Wait()
 }
 func Init(){
-	pwd,_ := os.Getwd()
-	imageFolderPath := filepath.Join(pwd,"image")
-	rootFolderPath := filepath.Join(pwd,"rootfs")
-	if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
-		panic(err)
+	imageFolderPath := "/home/ubuntu/docker/image" 
+	rootFolderPath := "/home/ubuntu/docker/rootfs" 
+	if _, err := os.Stat(rootFolderPath); os.IsNotExist(err){
+		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
+			panic(err)
+		}
 	}
 	if err := syscall.Sethostname([]byte("container")); err != nil{
 		panic(err)
@@ -516,6 +518,7 @@ func Init(){
 	}
 }
 func CopyFileOrDirectory(src string, dst string) error{
+	fmt.Println("Copy %s => %s",src,dst)
 	cmd := exec.Command("cp","-r",src,dst)
 	err := cmd.Run()
 	return err
