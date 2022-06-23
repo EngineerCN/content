@@ -494,6 +494,7 @@ func Init(){
 		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
 			panic(err)
 		}
+		panic(err)
 	}
 	if err := syscall.Sethostname([]byte("container")); err != nil{
 		panic(err)
@@ -517,8 +518,7 @@ func Init(){
 func CopyFileOrDirectory(src string, dst string) error{
 	fmt.Println("Copy %s => %s",src,dst)
 	cmd := exec.Command("cp","-r",src,dst)
-	err := cmd.Run()
-	return err
+	return cmd.Run()
 }
 ```
 
