@@ -494,7 +494,6 @@ func Init(){
 		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
 			panic(err)
 		}
-		panic(err)
 	}
 	if err := syscall.Sethostname([]byte("container")); err != nil{
 		panic(err)
