@@ -461,11 +461,15 @@ func Init(){
 
 # Docker V0.6
 
-#### _Component Diagram_
+### _Component Diagram_
 
 ![image](https://user-images.githubusercontent.com/9009522/175440366-343f4501-453d-42c4-b5ec-a929445dde8a.png)
 
-#### _Source Code_
+### _Source Code_
+#### Fix issues
+```
+path,err := exec.LookPath(os.Args[2])
+```
 ##### _makefile_
 ```
 CMD=go
@@ -656,10 +660,7 @@ func GenerateContainerId(n uint) string {
         return string(b)
 }
 ```
-### Fix issues
-```
-path,err := exec.LookPath(os.Args[2])
-```
+
 
 ### _Shell cmd to test_
 #### _check network isolation_
