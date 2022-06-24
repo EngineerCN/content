@@ -566,6 +566,8 @@ import(
 	"fmt"
 	"os/exec"
 	"syscall"
+	"math/rand"
+	"time"
 )
 func main(){
 	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
@@ -607,7 +609,7 @@ func Run(){
 }
 func Init(){
 	imageFolderPath := "/var/lib/docker/images/base"
-	rootFolderPath := "/var/lib/docker/containers/rootfs"
+	rootFolderPath := "/var/lib/docker/containers/"+GenerateContainerId(64)
 	if _, err := os.Stat(rootFolderPath); os.IsNotExist(err){
 		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
 			panic(err)
@@ -636,9 +638,19 @@ func Init(){
 
 }
 func CopyFileOrDirectory(src string, dst string) error{
-	fmt.Println("Copy %s => %s",src,dst)
+	fmt.Printf("Copy %s => %s",src,dst)
 	cmd := exec.Command("cp","-r",src,dst)
 	return cmd.Run()
+}
+func GenerateContainerId(n uint) string {
+	rand.Seed(time.Now().UnixNano())
+	const letters = "abcdefghijklmnopqrstuvwxyz0123456789"
+	b := make([]byte, n)
+	length := len(letters)
+        for i := range b {
+            b[i] = letters[rand.Intn(length)]
+        }
+        return string(b)
 }
 ```
 ### Fix issues
