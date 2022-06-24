@@ -540,9 +540,19 @@ func Init(){
 	if err := syscall.Mount("proc","/proc","proc",0,""); err != nil{
 		panic(err)
 	}
-	if err := syscall.Exec(os.Args[2], os.Args[2:], os.Environ()); err != nil {
+	path,err := exec.LookPath(os.Args[2])
+	if err != nil{
 		panic(err)
 	}
+	fmt.Println(path)
+	if err := syscall.Exec(path, os.Args[2:], os.Environ()); err != nil {
+		panic(err)
+	}
+	fmt.Println("unmount /proc.........")
+	if err := syscall.Unmount("/proc",0); err != nil{
+		panic(err)
+	}
+
 }
 func CopyFileOrDirectory(src string, dst string) error{
 	fmt.Println("Copy %s => %s",src,dst)
