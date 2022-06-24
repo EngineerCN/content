@@ -2,7 +2,9 @@
 + 组件依赖与部署便利性
 + 资源使用成效
 + 应用可移植性
-#### _虚拟技术是系统颗粒度，容器技术是进程颗粒度。_
+```
+虚拟技术是系统颗粒度，容器技术是进程颗粒度.
+```
 
 # Docker Architecture
 
@@ -20,15 +22,15 @@
 
 # Docker V0.1
 
-### Layer Diagram
+### _Layer Diagram_
 
 ![image](https://user-images.githubusercontent.com/9009522/174298433-8b73ffa2-a5a4-4d94-a7f3-9cb7dd043cae.png)
 
-### Docker Command
+### _Docker Command_
 ```
 docker run --rm -it ubuntu /bin/bash
 ```
-### main.go
+### _Source Code_
 ```
 package main
 import(
@@ -65,7 +67,7 @@ func run(){
 
 ```
 # Docker V0.2 
-### Linux Namespace
+### _Linux Namespace_
 | Namespace类型 | 系统调用参数 | 内核版本 | 用途 |
 |:--:|:--:|:--:|:--:|
 | Mount Namespace | CLONE NEWNS | 2.4.19 |隔离进程看到挂载点视图|
@@ -77,7 +79,7 @@ func run(){
 
 Linux kernel Clone flags https://man7.org/linux/man-pages/man2/clone.2.html
 
-### Shell cmd to create a process with own namespace
+### _Shell cmd to create a process with own namespace_
 shell in linux
 ```
 sudo unshare --fork --pid --mount-proc bash
@@ -92,7 +94,7 @@ ls -l /proc/<pid>/ns
 ```
 
 
-### fork/clone/exec区别
+### _fork/clone/exec区别_
 
 https://blog.csdn.net/wdjhzw/article/details/25614969
 
@@ -102,7 +104,7 @@ https://blog.csdn.net/ljianhui/article/details/10089345
 
 http://www.360doc.com/content/11/0502/11/6580811_113691501.shtml
 
-### unshare --help
+### _unshare --help_
 ```
 Usage:
  unshare [options] [<program> [<argument>...]]
@@ -139,7 +141,7 @@ Options:
 For more details see unshare(1)
 ```
 
-### Docker V0.2 (Add UTS Namespace)
+### _Source Code (Add UTS Namespace)_
 ```
 package main
 import(
@@ -171,7 +173,7 @@ func run(){
 	}
 }
 ```
-#### Build in Container with err
+#### _Issues_
 ```
 panic: fork/exec /bin/sh: operation not permitted
 
@@ -181,17 +183,17 @@ main.run()
 main.main()
 	/go/src/main.go:13 +0xcc
 ```
-#### Solution
+#### _Solution_
 ```
 docker run -itd --privileged golang
 ```
-#### Ref
+#### _Ref_
 exec.Command: https://pkg.go.dev/os/exec@go1.18.3#Command
 
 SysProcAttr: https://pkg.go.dev/syscall@go1.18.3#SysProcAttr
 
 # Docker V0.3
-### Use make && makefile
+### _Use make && makefile_
 ```
 CMD=go
 BIN_PATH=bin
@@ -212,7 +214,7 @@ uninstall:
 
 clean: uninstall
 ```
-### Docker V0.3
+### _Source Code_
 ```
 package main
 import(
@@ -256,8 +258,8 @@ func child(){
 
 
 # Docker V0.4
-### proc
 
+### _Proc Folder_
 /proc是一个虚拟文件系统,非真实文件而是开机后系统各项信息综合挂载，其中/proc/PID形式命名目录可以查看系统运行中各进程相关信息
 | 标识（N为PID） | 用途 |
 |:--:|:--:|
@@ -274,17 +276,20 @@ func child(){
 |/proc/N/statm|进程使用的内存的状态|
 |/proc/N/status|进程状态信息，比stat/statm更具可读性|
 |/proc/self|链接到当前正在运行的进程|
-### Mount proc
+
+### _Mount Proc Folder_
+```
 top,ps 读取/proc信息
-##### shell
+```
+#### _Shell cmd to mount proc folder_
 ```
 mount -t proc proc /proc
 ```
-##### go syscall.Mount
+#### _Golang use syscall.Mount_
 ```
 func Mount(source string, target string, fstype string, flags uintptr, data string) (err error)
 ```
-##### mount flags
+#### _Mount Flags_
 ```
 public enum MountFlags : ulong
 {
@@ -303,6 +308,7 @@ public enum MountFlags : ulong
     MS_BIND = 4096,  // Bind directory at different place.
 }; // End Enum MountFlags : ulong
 ```
+#### _Linux ManualBook for Mount & Clone_
 ```
 man 2 mount
 ```
@@ -310,10 +316,10 @@ man 2 mount
 man 2 clone
 
 ```
-##### Ref 
+#### _Ref_ 
 https://zhuanlan.zhihu.com/p/36268333
 
-### Docker V0.4(Add NEWPID Namespace)
+### _Source Code (Add NEWPID Namespace)_
 ```
 package main
 import(
@@ -362,14 +368,14 @@ func child(){
 	syscall.Unmount("/proc",0)
 }
 ```
-#### Need to fix issues
+#### _Issues_
 ```
 Error, do this: mount -t proc proc /proc
 ```
 
 
 # Docker V0.5
-### Fix the double shell problem
+### _Fix the double shell problem_
 ```
 package main
 import(
@@ -408,7 +414,7 @@ func Init(){
 	syscall.Unmount("/proc",0)
 }
 ```
-### Add new file system for new process
+### _Add new file system for new process_
 ```
 package main
 import(
@@ -452,6 +458,14 @@ func Init(){
 	syscall.Unmount("/proc",0)
 }
 ```
+
+# Docker V0.6
+
+#### _Component Diagram_
+
+![image](https://user-images.githubusercontent.com/9009522/175440366-343f4501-453d-42c4-b5ec-a929445dde8a.png)
+
+#### _Source Code_
 
 ```
 package main
