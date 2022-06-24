@@ -466,14 +466,34 @@ func Init(){
 ![image](https://user-images.githubusercontent.com/9009522/175440366-343f4501-453d-42c4-b5ec-a929445dde8a.png)
 
 #### _Source Code_
+##### _makefile_
+```
+CMD=go
+BIN_PATH=bin
+SRC_PATH=src
 
+all: clean build install
+
+build: 
+	$(CMD) build -o $(BIN_PATH)/docker $(SRC_PATH)/*
+
+install:
+	cp bin/docker /usr/bin/docker
+	cp bin/docker /usr/local/bin/docker
+
+uninstall:
+	rm -rf /usr/bin/docker /usr/local/bin/docker
+	rm -rf bin/docker
+
+clean: uninstall
+```
+##### _src/docker.go_
 ```
 package main
 import(
 	"os"
 	"fmt"
 	"os/exec"
-	"path/filepath"
 	"syscall"
 )
 func main(){
@@ -500,10 +520,11 @@ func Run(){
 		panic(err)
 	}
 	cmd.Wait()
+	fmt.Println("end process.........")
 }
 func Init(){
-	imageFolderPath := "/home/ubuntu/docker/image" 
-	rootFolderPath := "/home/ubuntu/docker/rootfs" 
+	imageFolderPath := "/var/lib/docker/images/base"
+	rootFolderPath := "/var/lib/docker/containers/rootfs"
 	if _, err := os.Stat(rootFolderPath); os.IsNotExist(err){
 		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
 			panic(err)
@@ -524,6 +545,7 @@ func Init(){
 	if err := syscall.Exec(os.Args[2], os.Args[2:], os.Environ()); err != nil {
 		panic(err)
 	}
+	fmt.Println("unmount /proc.........")
 	if err := syscall.Unmount("/proc",0); err != nil{
 		panic(err)
 	}
