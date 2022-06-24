@@ -548,10 +548,6 @@ func Init(){
 	if err := syscall.Exec(path, os.Args[2:], os.Environ()); err != nil {
 		panic(err)
 	}
-	fmt.Println("unmount /proc.........")
-	if err := syscall.Unmount("/proc",0); err != nil{
-		panic(err)
-	}
 
 }
 func CopyFileOrDirectory(src string, dst string) error{
