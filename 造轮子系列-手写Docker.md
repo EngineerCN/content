@@ -519,7 +519,6 @@ func Run(){
 		panic(err)
 	}
 	cmd.Wait()
-	fmt.Println("end process.........")
 }
 func Init(){
 	imageFolderPath := "/var/lib/docker/images/base"
@@ -542,10 +541,6 @@ func Init(){
 		panic(err)
 	}
 	if err := syscall.Exec(os.Args[2], os.Args[2:], os.Environ()); err != nil {
-		panic(err)
-	}
-	fmt.Println("unmount /proc.........")
-	if err := syscall.Unmount("/proc",0); err != nil{
 		panic(err)
 	}
 }
