@@ -629,14 +629,16 @@ func CopyFileOrDirectory(src string, dst string) error{
 ```
 
 ### _Shell cmd to test_
-#### check network isolation
+#### _check network isolation_
 ```
 ip addr
 ```
-#### check ipc isolation
+#### _check ipc isolation_
+list queue
 ```
 ipcs -q
 ```
+add msg to queue
 ```
 ipcmk -Q
 ```
