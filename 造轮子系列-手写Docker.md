@@ -627,6 +627,9 @@ func CopyFileOrDirectory(src string, dst string) error{
 	return cmd.Run()
 }
 ```
+### Fix issues
+```
+```
 
 ### _Shell cmd to test_
 #### _check network isolation_
@@ -645,5 +648,6 @@ ipcmk -Q
 # Docker V0.8 (Use conbra)
 #### _Source Code_
 ```
+path,err := exec.LookPath(os.Args[2])
 ```
 #### 
