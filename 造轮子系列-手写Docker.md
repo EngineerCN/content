@@ -629,6 +629,7 @@ func CopyFileOrDirectory(src string, dst string) error{
 ```
 ### Fix issues
 ```
+path,err := exec.LookPath(os.Args[2])
 ```
 
 ### _Shell cmd to test_
@@ -648,6 +649,6 @@ ipcmk -Q
 # Docker V0.8 (Use conbra)
 #### _Source Code_
 ```
-path,err := exec.LookPath(os.Args[2])
+
 ```
 #### 
