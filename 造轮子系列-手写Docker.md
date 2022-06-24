@@ -551,7 +551,7 @@ func Init(){
 
 }
 func CopyFileOrDirectory(src string, dst string) error{
-	fmt.Println("Copy %s => %s",src,dst)
+	fmt.Printf("Copy %s => %s",src,dst)
 	cmd := exec.Command("cp","-r",src,dst)
 	return cmd.Run()
 }
