@@ -480,6 +480,9 @@ build:
 install:
 	cp bin/docker /usr/bin/docker
 	cp bin/docker /usr/local/bin/docker
+	mkdir -p /var/lib/docker/images
+	mkdir -p /var/lib/docker/volumes
+	mkdir -p /var/lib/docker/containers
 
 uninstall:
 	rm -rf /usr/bin/docker /usr/local/bin/docker
