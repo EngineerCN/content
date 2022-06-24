@@ -557,3 +557,87 @@ func CopyFileOrDirectory(src string, dst string) error{
 }
 ```
 
+# Docker V0.7 (Add IPC/Network/User Namespace)
+### _Source Code_
+```
+package main
+import(
+	"os"
+	"fmt"
+	"os/exec"
+	"syscall"
+)
+func main(){
+	fmt.Printf("Process => %v [%d]\n",os.Args,os.Getpid())
+	switch os.Args[1]{
+		case "run":
+			Run()
+		case "init":
+			Init()
+		default:
+			panic("have not defined.")
+	}
+}
+func Run(){
+	cmd:=exec.Command(os.Args[0],"init",os.Args[2])
+	cmd.SysProcAttr = &syscall.SysProcAttr{
+		Cloneflags:syscall.CLONE_NEWUTS|syscall.CLONE_NEWPID|syscall.CLONE_NEWNS,
+	}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	if err:=cmd.Start();err!=nil{
+		panic(err)
+	}
+	cmd.Wait()
+}
+func Init(){
+	imageFolderPath := "/var/lib/docker/images/base"
+	rootFolderPath := "/var/lib/docker/containers/rootfs"
+	if _, err := os.Stat(rootFolderPath); os.IsNotExist(err){
+		if err := CopyFileOrDirectory(imageFolderPath,rootFolderPath); err != nil{
+			panic(err)
+		}
+	}
+	if err := syscall.Sethostname([]byte("container")); err != nil{
+		panic(err)
+	}
+	if err := syscall.Chroot(rootFolderPath); err != nil{
+		panic(err)
+	}
+	if err := syscall.Chdir("/"); err != nil{
+		panic(err)
+	}
+	if err := syscall.Mount("proc","/proc","proc",0,""); err != nil{
+		panic(err)
+	}
+	path,err := exec.LookPath(os.Args[2])
+	if err != nil{
+		panic(err)
+	}
+	fmt.Println(path)
+	if err := syscall.Exec(path, os.Args[2:], os.Environ()); err != nil {
+		panic(err)
+	}
+
+}
+func CopyFileOrDirectory(src string, dst string) error{
+	fmt.Println("Copy %s => %s",src,dst)
+	cmd := exec.Command("cp","-r",src,dst)
+	return cmd.Run()
+}
+```
+
+### _Shell cmd to test_
+#### check network isolation
+```
+ip addr
+```
+#### check ipc isolation
+```
+ipcs -q
+```
+```
+ipcmk -Q
+```
+
