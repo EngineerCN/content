@@ -676,7 +676,7 @@ add msg to queue
 ```
 ipcmk -Q
 ```
-# Docker V0.8 (Use conbra)
+# Docker V0.8 (Use cobra)
 #### _Source Code_
 ```
 
